@@ -1,0 +1,50 @@
+Zadanie 1 
+
+let rec flatten1 (a) =
+  if a = [] then
+    []
+  else
+    (List.hd a) @ flatten1(List.tl a);;
+
+Zadanie 2
+
+let rec count(x,xs) =
+  if xs = [] then
+    0
+  else
+    count(x,List.tl xs) + (if (List.hd xs) = x then 1 else 0);;
+
+Zadanie 3
+
+let rec replicate(a,number) =
+  if number = 0 then
+    []
+  else
+    replicate(a,number-1) @ [a];;
+
+Zadanie 4
+
+let rec sqrList(xs) =
+  if xs = [] then
+    []
+  else
+    [(List.hd xs) * (List.hd xs)] @ sqrList(List.tl xs);;
+   
+Zadanie 5
+
+let palindrome(a) =
+  if (List.rev a) = a then true
+  else false;;
+
+Zadanie 6
+
+let rec listLength(a) =
+  if a = [] then
+    0
+  else
+    1 + listLength(List.tl a)
+
+
+
+
+
