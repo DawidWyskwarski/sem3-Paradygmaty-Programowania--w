@@ -1,0 +1,63 @@
+let rec fib n =
+  if n=0 || n=1 then
+    n
+  else
+    fib (n-1) + fib (n-2)
+
+
+let fibTail n=
+  if n=0 then 0
+  else
+    let rec tmp(n,prev,cur) =
+      if n>0 then
+        tmp(n-1,cur,cur+prev)
+      else
+        cur
+
+    in tmp(n-1,0,1)
+
+Ex3
+let rec power(a,n) =
+  if n=0 then
+    1.
+  else
+    a *. power(a,n-1)
+
+let root3 (a, epsilon) =
+  let rec rooting (a,x) =
+    if Float.abs( (power(x,3) -. a) ) <= epsilon *. Float.abs(a) then
+      x
+    else
+      rooting(a, ( x +. ( ( (a /. power(x,2) ) -. x) ) /. 3.) )
+
+  in if Float.abs(a) > 1. then
+    rooting(a,a/.3.)
+  else
+    rooting(a,a)
+
+Ex4
+let a xs =
+  match xs with
+  | z::y::x::tail -> x
+
+let b xs =
+  match xs with
+  | _ :: (x,y) :: [] -> x
+
+Ex5
+
+let rec initSegment(xs,ys) =
+  match (xs,ys) with
+  | ([],_) -> true
+  | (xHead::xTail, yHead::yTail) when xHead = yHead -> initSegment(xTail,yTail)
+  | (xHead::xTail, yHead::yTail) when xHead <> yHead -> false
+  | (_,[]) -> false
+
+Ex6
+
+let rec replaceNth(xs,n,x) =
+  match (xs,n) with
+  | ([],_) -> raise ( Failure("Illegal value of n") )
+  | (_,n) when n<0 -> raise (Failure( "Illegal value of n") )
+  | (_::tail,0) -> x::tail
+  | (head::tail,_) -> head :: replaceNth(tail,n-1,x)
