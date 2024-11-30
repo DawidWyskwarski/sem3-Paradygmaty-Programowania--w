@@ -1,0 +1,15 @@
+let rec quicksort = function
+    [] -> []
+  | [x] -> [x]
+  | xs -> let small = List.filter (fun y -> y < List.hd xs ) xs
+      and large = List.filter (fun y -> y >= List.hd xs ) xs
+      in quicksort small @ quicksort large;;
+(* nie dziala bo jak jest jakiś fragment posortowany
+to wpada w nieskończoną pętle *)
+
+let rec quicksort' = function
+    [] -> []
+  | x::xs -> let small = List.filter (fun y -> y < x ) xs
+      and large = List.filter (fun y -> y > x ) xs
+      in quicksort' small @ (x :: quicksort' large);;
+(*jeśli jakieś elementy się powtarzając to filter jes skipuje*)

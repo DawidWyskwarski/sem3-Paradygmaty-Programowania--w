@@ -1,0 +1,8 @@
+a) let f1 x = x 2 2;;
+x to funkcja dwu argumentowa która przyjmuje intyi zwraca 'a
+(int -> int -> 'a) -> 'a
+
+b) let f2 x y z = x (y ^ z)
+x to funkcja która bierze stringa i zwraca 'a, y oraz z to stringi
+
+(string -> 'a) -> string -> string -> 'a
