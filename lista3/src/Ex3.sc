@@ -6,9 +6,7 @@ def sumProd(xs:List[Int]): (Int,Int) =
     case Nil => (0,1)
 
 def sumProdFL(xs:List[Int]): (Int,Int) =
-  xs.foldLeft(0,1){
-    case  ((sum,prod),head) => (sum+head,prod*head)
-  }
+  xs.foldLeft(0,1)((acc,head) => (acc._1 + head, acc._2 * head))
   
 sumProdFL(List(1,2,3,4,5)) 
 sumProd(List(1,2,3,4,5))
