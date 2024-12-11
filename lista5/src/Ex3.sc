@@ -5,7 +5,6 @@ case class LNode[+A](elem: A, left: () => lBT[A], right: () => lBT[A]) extends l
 def lTree(n:Int):lBT[Int] =
   LNode(n, () => lTree(2*n) ,() => lTree(2*n+1))
 
-
 def lBFS[A](lTree:lBT[A]): LazyList[A] =
   def tmp(queue:List[lBT[A]]): LazyList[A] =
     queue match
